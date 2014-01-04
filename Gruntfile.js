@@ -353,7 +353,7 @@ module.exports = function( grunt ) {
 				keepSpecialComments: 0
 			},
 			minify: {
-				files: files.getMinifiedCSSFiles( dist ),
+				files: files.getMinifiedCSSFiles( dist )
 			}
 		},
 
@@ -515,7 +515,7 @@ module.exports = function( grunt ) {
 							content = content.replace( re, "" );
 						}
 						return content;
-					},
+					}
 				},
 				files: {
 					// WARNING: This will be modified by the config:copy:noversion task
@@ -640,7 +640,12 @@ module.exports = function( grunt ) {
 				"--web-security": "no",
 				coverage: {
 					baseUrl: ".",
-					src: [ "js/**/*.js" ],
+					src: [
+						"js/**/*.js",
+						"!js/jquery.js",
+						"!js/**/jquery.ui*.js",
+						"!js/jquery.hashchange.js"
+					],
 					instrumentedFiles: "temp/",
 					htmlReport: "build/report/coverage",
 					lcovReport: "build/report/lcov",
