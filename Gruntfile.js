@@ -644,7 +644,7 @@ module.exports = function( grunt ) {
 					instrumentedFiles: "temp/",
 					htmlReport: "build/report/coverage",
 					lcovReport: "build/report/lcov",
-					linesThresholdPct: 85
+					linesThresholdPct: 0
 				}
 			},
 
@@ -724,7 +724,7 @@ module.exports = function( grunt ) {
 		},
 
 		coveralls: {
-			options: {
+			all: {
 				// LCOV coverage file relevant to every target
 				src: "build/report/lcov/lcov.info"
 			}
