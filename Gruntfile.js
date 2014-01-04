@@ -636,10 +636,17 @@ module.exports = function( grunt ) {
 
 		qunit: {
 			options: {
-				timeout: 30000
+				timeout: 30000,
+				"--web-security": "no",
+				coverage: {
+					baseUrl: ".",
+					src: [ "js/**/*.js" ],
+					instrumentedFiles: "temp/",
+					htmlReport: "build/report/coverage",
+					lcovReport: "build/report/lcov",
+					linesThresholdPct: 85
+				}
 			},
-
-			files: {},
 
 			http: {
 				options: {
@@ -716,6 +723,13 @@ module.exports = function( grunt ) {
 			}
 		},
 
+		coveralls: {
+			options: {
+				// LCOV coverage file relevant to every target
+				src: 'build/report/lcov/lcov.info'
+			}
+		},
+
 		clean: {
 			dist: [ dist ],
             git: [ path.join( dist, "git" ) ],
@@ -733,7 +747,8 @@ module.exports = function( grunt ) {
 	grunt.loadNpmTasks( "grunt-contrib-concat" );
 	grunt.loadNpmTasks( "grunt-contrib-connect" );
 	grunt.loadNpmTasks( "grunt-contrib-cssmin" );
-	grunt.loadNpmTasks( "grunt-contrib-qunit" );
+	grunt.loadNpmTasks( "grunt-coveralls" );
+	grunt.loadNpmTasks( "grunt-qunit-istanbul" );
 	grunt.loadNpmTasks( "grunt-contrib-requirejs" );
 	grunt.loadNpmTasks( "grunt-contrib-uglify" );
 	grunt.loadNpmTasks( "grunt-git-authors" );
