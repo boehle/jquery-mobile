@@ -726,7 +726,7 @@ module.exports = function( grunt ) {
 		coveralls: {
 			options: {
 				// LCOV coverage file relevant to every target
-				src: 'build/report/lcov/lcov.info'
+				src: "build/report/lcov/lcov.info"
 			}
 		},
 
